@@ -134,8 +134,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,7 +184,28 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\IMaxwell.Core.Model\IMaxwell.Core.Model.csproj">
+      <Project>{6D12E31D-83DB-4CD5-9D08-3030C35C746B}</Project>
+      <Name>IMaxwell.Core.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\IMaxwell.Core.Provider\IMaxwell.Core.Provider.csproj">
+      <Project>{3ECAEBE8-46D3-45D4-9384-435D5CCC8D51}</Project>
+      <Name>IMaxwell.Core.Provider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\IMaxwell.Data.Core\IMaxwell.Data.Core.csproj">
+      <Project>{14DE73A2-892E-4B1F-BABA-C499814F12D9}</Project>
+      <Name>IMaxwell.Data.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\IMaxwell.Data.SqlServer\IMaxwell.Data.SqlServer.csproj">
+      <Project>{1B27A67F-654A-4F6F-BE85-F15D09CAAD11}</Project>
+      <Name>IMaxwell.Data.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\IMaxwell.Data.Sql\IMaxwell.Data.Sql.csproj">
+      <Project>{BC9B2938-A6AB-412F-A50E-F7854FF7605D}</Project>
+      <Name>IMaxwell.Data.Sql</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
