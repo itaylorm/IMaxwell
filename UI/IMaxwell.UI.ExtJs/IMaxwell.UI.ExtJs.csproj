@@ -14,7 +14,7 @@
     <RootNamespace>IMaxwell.UI.ExtJs</RootNamespace>
     <AssemblyName>IMaxwell.UI.ExtJs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -65,10 +65,32 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="app\Application.js" />
+    <Content Include="app\controller\Contacts.js" />
+    <Content Include="app\controller\Main.js" />
+    <Content Include="app\controller\MainMenu.js" />
+    <Content Include="app\controller\MainTab.js" />
+    <Content Include="app\model\Contact.js" />
+    <Content Include="app\store\Contacts.js" />
+    <Content Include="app\view\ContactList.js" />
+    <Content Include="app\view\Header.js" />
+    <Content Include="app\view\menu\MainMenu.js" />
+    <Content Include="app\view\tab\Contacts.js" />
+    <Content Include="app\view\tab\MainTab.js" />
+    <Content Include="app\view\Viewport.js" />
+    <Content Include="bootstrap.css" />
+    <Content Include="bootstrap.js" />
+    <Content Include="ext\ext-debug.js" />
+    <Content Include="index.html" />
+    <Content Include="resources\css\app.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\icons\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -85,7 +107,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49449</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49449/</IISUrl>
+          <IISUrl>http://iMaxwell.net/ExtJs</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://iMaxwell.net/ExtJs</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
