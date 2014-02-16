@@ -61,7 +61,7 @@ namespace IMaxwell.Data.Sql.Test
             taylorRow["Rate"] = 100000.00;
             dataTable.Rows.Add(taylorRow);
 
-            queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>())).Returns(dataTable).Verifiable("RetrieveData was not called");
+            queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(dataTable).Verifiable("RetrieveData was not called");
 
             var employee = employeeProvider.Retrieve(1);
 

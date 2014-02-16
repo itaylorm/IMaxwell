@@ -80,9 +80,9 @@ namespace IMaxwell.Data.SqlServer
         /// <summary>
         /// Retrieve data associated with the passed query string
         /// </summary>
-        /// <param name="query">Query String for which to return data</param>
+        /// <param name="procedure">Name of procedure which will return data</param>
         /// <returns>Returns data associated with the query string</returns>
-        public virtual DataTable RetrieveData(string query)
+        public DataTable RetrieveData(string procedure)
         {
 
             var dataTable = new DataTable();
@@ -94,8 +94,10 @@ namespace IMaxwell.Data.SqlServer
 
                     connection.Open();
 
-                    using (var command = CreateCommand(query, connection))
+                    using (var command = CreateCommand(procedure, connection))
                     {
+
+                        command.CommandType = CommandType.StoredProcedure;
 
                         var adapter = CreateDataAdapter(command);
 
@@ -126,78 +128,57 @@ namespace IMaxwell.Data.SqlServer
         }
 
         /// <summary>
-        /// Return data only if exists, otherwise empty value
+        /// Retrieve data by stored procedure with the passed identifier
         /// </summary>
-        /// <param name="row">Current database row</param>
-        /// <param name="fieldName">Field name for which to return data</param>
-        /// <returns>Returns data associated with field within the provided row</returns>
-        public static int RetrieveIntValue(DataRow row, string fieldName)
+        /// <param name="procedure">Name of command for retrieving data</param>
+        /// <param name="idParameterName">Id parameter used by the procedure</param>
+        /// <param name="id">Unique Identifier for the data to return</param>
+        /// <returns>Returns data associated with the id</returns>
+        public virtual DataTable RetrieveData(string procedure, string idParameterName, int id)
         {
 
-            int value;
+            var dataTable = new DataTable();
 
-            return Int32.TryParse(row[fieldName].ToString(), out value) ? value : value;
+            try
+            {
+                using (var connection = CreateConnection())
+                {
+
+                    connection.Open();
+
+                    using (var command = CreateCommand(procedure, connection))
+                    {
+
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        var idParameter = new SqlParameter(idParameterName, SqlDbType.Int) {Value = id};
+                        command.Parameters.Add(idParameter);
+
+                        var adapter = CreateDataAdapter(command);
+
+                        using (var dataSet = new DataSet())
+                        {
+                            adapter.Fill(dataSet);
+
+                            if (dataSet.Tables.Count > 0)
+                            {
+                                dataTable = dataSet.Tables[0];
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Log.Error("Retrieve Contacts failed with a database error", ex);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Retrieve Contacts failed with a general error", ex);
+            }
+
+            return dataTable;
         }
-
-
-        /// <summary>
-        /// Return data only if exists, otherwise empty value
-        /// </summary>
-        /// <param name="row">Current database row</param>
-        /// <param name="fieldName">Field name for which to return data</param>
-        /// <returns>Returns data associated with field within the provided row</returns>
-        public static string RetrieveStringValue(DataRow row, string fieldName)
-        {
-            return row[fieldName] != DBNull.Value ? row[fieldName].ToString() : string.Empty;
-        }
-
-        /// <summary>
-        /// Return data only if exists, otherwise DateTime.Min
-        /// </summary>
-        /// <param name="row">Current database row</param>
-        /// <param name="fieldName">Field name for which to return data</param>
-        /// <returns>Returns data associated with field within the provided row</returns>
-        public static DateTime RetrieveDateTimeValue(DataRow row, string fieldName)
-        {
-            DateTime dateTime = DateTime.MinValue;
-
-            if (row[fieldName] != DBNull.Value)
-                DateTime.TryParse(row[fieldName].ToString(), out dateTime);
-
-            return dateTime;
-        }
-
-        /// <summary>
-        /// Return data only if exists, otherwise false
-        /// </summary>
-        /// <param name="row">Current database row</param>
-        /// <param name="fieldName">Field name for which to return data</param>
-        /// <returns>Returns data associated with field within the provided row</returns>
-        public static bool RetrieveBooleanValue(DataRow row, string fieldName)
-        {
-            var value = false;
-
-            if (row[fieldName] != DBNull.Value)
-                Boolean.TryParse(row[fieldName].ToString(), out value);
-
-            return value;
-        }
-
-        /// <summary>
-        /// Return data only if exists, otherwise 0
-        /// </summary>
-        /// <param name="row">Current database row</param>
-        /// <param name="fieldName">Field name for which to return data</param>
-        /// <returns>Returns data associated with field within the provided row</returns>
-        public static decimal RetrieveDecimalValue(DataRow row, string fieldName)
-        {
-            decimal value = 0;
-
-            if (row[fieldName] != DBNull.Value)
-                Decimal.TryParse(row[fieldName].ToString(), out value);
-
-            return value;
-        }
-
     }
 }

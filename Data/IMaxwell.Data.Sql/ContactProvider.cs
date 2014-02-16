@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using IMaxwell.Core.Model;
 using IMaxwell.Core.Provider;
+using IMaxwell.Data.Core;
 using IMaxwell.Data.SqlServer;
 using log4net;
 
@@ -40,25 +41,15 @@ namespace IMaxwell.Data.Sql
             try
             {
 
-                var command = String.Format(@"
-                SELECT
-	              c.ContactId
-	              ,c.[FirstName]
-                  ,c.[LastName]
-                  ,c.[MiddleName]
-      
-                FROM [iMaxwell].[Person].[Contact] c
-                WHERE c.ContactId ='{0}'", id);
-
-                var dataTable = _queryProvider.RetrieveData(command);
+                var dataTable = _queryProvider.RetrieveData("Person.ContactByContactId", "ContactId", id);
 
                 contact = (from DataRow row in dataTable.Rows
                            select new Contact
                            {
-                               Id = QueryProvider.RetrieveIntValue(row, "ContactId"),
-                               FirstName = QueryProvider.RetrieveStringValue(row, "FirstName"),
-                               MiddleName = QueryProvider.RetrieveStringValue(row, "MiddleName"),
-                               LastName = QueryProvider.RetrieveStringValue(row, "LastName")
+                               Id = DataProvider.RetrieveIntValue(row, "ContactId"),
+                               FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
+                               MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
+                               LastName = DataProvider.RetrieveStringValue(row, "LastName")
                            }).FirstOrDefault();
 
             }
@@ -81,24 +72,15 @@ namespace IMaxwell.Data.Sql
             try
             {
 
-                const string command = @"
-                SELECT
-	              c.ContactId
-	              ,c.[FirstName]
-                  ,c.[LastName]
-                  ,c.[MiddleName]
-      
-              FROM [iMaxwell].[Person].[Contact] c";
-
-                var dataTable = _queryProvider.RetrieveData(command);
+                var dataTable = _queryProvider.RetrieveData("Person.ContactSelect");
 
                 contacts = (from DataRow row in dataTable.Rows
                             select new Contact
                             {
-                                Id = QueryProvider.RetrieveIntValue(row, "ContactId"),
-                                FirstName = QueryProvider.RetrieveStringValue(row, "FirstName"),
-                                MiddleName = QueryProvider.RetrieveStringValue(row, "MiddleName"),
-                                LastName = QueryProvider.RetrieveStringValue(row, "LastName")
+                                Id = DataProvider.RetrieveIntValue(row, "ContactId"),
+                                FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
+                                MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
+                                LastName = DataProvider.RetrieveStringValue(row, "LastName")
 
                             }).ToList();
             }

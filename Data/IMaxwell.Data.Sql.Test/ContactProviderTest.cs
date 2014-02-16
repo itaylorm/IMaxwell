@@ -37,7 +37,7 @@ namespace IMaxwell.Data.Sql.Test
             taylorRow["LastName"] = "Maxwell";
             dataTable.Rows.Add(taylorRow);
 
-            queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>())).Returns(dataTable).Verifiable("RetrieveData was not called");
+            queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(dataTable).Verifiable("RetrieveData was not called");
 
             var contact = contactProvider.Retrieve(1);
 

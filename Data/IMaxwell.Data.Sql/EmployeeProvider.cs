@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IMaxwell.Core.Model;
 using IMaxwell.Core.Provider;
-using IMaxwell.Data.SqlServer;
+using IMaxwell.Data.Core;
 using log4net;
 
 namespace IMaxwell.Data.Sql
@@ -42,69 +40,27 @@ namespace IMaxwell.Data.Sql
             try
             {
 
-                var command = String.Format(@"
-                    SELECT
-	                  c.ContactId
-	                  ,e.EmployeeID
-	                  ,c.[FirstName]
-                      ,c.[LastName]
-                      ,c.[MiddleName]
-	                  ,e.Gender
-	                  ,e.MaritalStatus
-	                  ,e.SalariedFlag
-	                  ,e.SickLeaveHours
-	                  ,e.VacationHours
-	                  ,e.Title
-	                  ,e.BirthDate
-	                  ,e.ModifiedDate
-	                  ,a.City
-	                  ,a.PostalCode
-	                  ,ph.Rate
-      
-                  FROM [iMaxwell].[Person].[Contact] c
-                  INNER JOIN iMaxwell.HumanResources.Employee e ON c.ContactID = e.ContactID 
-                  INNER JOIN (
-  
-	                SELECT * 
-	                FROM 
-		                (
-			                SELECT [EmployeeID]
-			                  ,[ModifiedDate]
-			                  ,[PayFrequency]
-			                  ,[Rate]
-			                  ,[RateChangeDate]
-			                  ,ROW_NUMBER() over (partition by EmployeeId order by ModifiedDate DESC) As Row
-			                  FROM iMaxwell.HumanResources.EmployeePayHistory ph1
-	                  ) As ph2
-	                  Where ph2.Row = 1
-
-                  ) as ph ON e.EmployeeID = ph.EmployeeID
-  
-                  INNER JOIN iMaxwell.HumanResources.EmployeeAddress ea ON e.EmployeeID = ea.EmployeeID
-                  INNER JOIN iMaxwell.Person.[Address] a ON ea.AddressID = a.AddressID
-                  WHERE e.EmployeeID ='{0}'", id);
-
-                var dataTable = _queryProvider.RetrieveData(command);
+                var dataTable = _queryProvider.RetrieveData("HumanResources.EmployeeWithRateByEmployeeID", "EmployeeID", id);
 
                 employee = (from DataRow row in dataTable.Rows
                             select new Employee
                             {
-                                Id = QueryProvider.RetrieveIntValue(row, "ContactId"),
-                                EmployeeId = QueryProvider.RetrieveIntValue(row, "EmployeeID"),
-                                FirstName = QueryProvider.RetrieveStringValue(row, "FirstName"),
-                                MiddleName = QueryProvider.RetrieveStringValue(row, "MiddleName"),
-                                LastName = QueryProvider.RetrieveStringValue(row, "LastName"),
-                                BirthDate = QueryProvider.RetrieveDateTimeValue(row, "BirthDate"),
-                                City = QueryProvider.RetrieveStringValue(row, "City"),
-                                Gender = QueryProvider.RetrieveStringValue(row, "Gender"),
-                                MaritalStatus = QueryProvider.RetrieveStringValue(row, "MaritalStatus"),
-                                ModifiedDate = QueryProvider.RetrieveDateTimeValue(row, "ModifiedDate"),
-                                PostalCode = QueryProvider.RetrieveStringValue(row, "PostalCode"),
-                                SalariedFlag = QueryProvider.RetrieveBooleanValue(row, "SalariedFlag"),
-                                SickLeaveHours = QueryProvider.RetrieveIntValue(row, "SickLeaveHours"),
-                                Title = QueryProvider.RetrieveStringValue(row, "Title"),
-                                VacationHours = QueryProvider.RetrieveIntValue(row, "VacationHours"),
-                                Rate = QueryProvider.RetrieveDecimalValue(row, "Rate")
+                                Id = DataProvider.RetrieveIntValue(row, "ContactId"),
+                                EmployeeId = DataProvider.RetrieveIntValue(row, "EmployeeID"),
+                                FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
+                                MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
+                                LastName = DataProvider.RetrieveStringValue(row, "LastName"),
+                                BirthDate = DataProvider.RetrieveDateTimeValue(row, "BirthDate"),
+                                City = DataProvider.RetrieveStringValue(row, "City"),
+                                Gender = DataProvider.RetrieveStringValue(row, "Gender"),
+                                MaritalStatus = DataProvider.RetrieveStringValue(row, "MaritalStatus"),
+                                ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate"),
+                                PostalCode = DataProvider.RetrieveStringValue(row, "PostalCode"),
+                                SalariedFlag = DataProvider.RetrieveBooleanValue(row, "SalariedFlag"),
+                                SickLeaveHours = DataProvider.RetrieveIntValue(row, "SickLeaveHours"),
+                                Title = DataProvider.RetrieveStringValue(row, "Title"),
+                                VacationHours = DataProvider.RetrieveIntValue(row, "VacationHours"),
+                                Rate = DataProvider.RetrieveDecimalValue(row, "Rate")
                             }).FirstOrDefault();
 
             }
@@ -127,68 +83,27 @@ namespace IMaxwell.Data.Sql
             try
             {
 
-                const string command = @"
-                    SELECT
-	                  c.ContactId
-	                  ,e.EmployeeID
-	                  ,c.[FirstName]
-                      ,c.[LastName]
-                      ,c.[MiddleName]
-	                  ,e.Gender
-	                  ,e.MaritalStatus
-	                  ,e.SalariedFlag
-	                  ,e.SickLeaveHours
-	                  ,e.VacationHours
-	                  ,e.Title
-	                  ,e.BirthDate
-	                  ,e.ModifiedDate
-	                  ,a.City
-	                  ,a.PostalCode
-	                  ,ph.Rate
-      
-                  FROM [iMaxwell].[Person].[Contact] c
-                  INNER JOIN iMaxwell.HumanResources.Employee e ON c.ContactID = e.ContactID 
-                  INNER JOIN (
-  
-	                SELECT * 
-	                FROM 
-		                (
-			                SELECT [EmployeeID]
-			                  ,[ModifiedDate]
-			                  ,[PayFrequency]
-			                  ,[Rate]
-			                  ,[RateChangeDate]
-			                  ,ROW_NUMBER() over (partition by EmployeeId order by ModifiedDate DESC) As Row
-			                  FROM iMaxwell.HumanResources.EmployeePayHistory ph1
-	                  ) As ph2
-	                  Where ph2.Row = 1
-
-                  ) as ph ON e.EmployeeID = ph.EmployeeID
-  
-                  INNER JOIN iMaxwell.HumanResources.EmployeeAddress ea ON e.EmployeeID = ea.EmployeeID
-                  INNER JOIN iMaxwell.Person.[Address] a ON ea.AddressID = a.AddressID";
-
-                var dataTable = _queryProvider.RetrieveData(command);
+                var dataTable = _queryProvider.RetrieveData("HumanResources.EmployeeWithRateSelect");
 
                 employees = (from DataRow row in dataTable.Rows
                              select new Employee
                              {
-                                 Id = QueryProvider.RetrieveIntValue(row, "ContactId"),
-                                 EmployeeId = QueryProvider.RetrieveIntValue(row, "EmployeeId"),
-                                 FirstName = QueryProvider.RetrieveStringValue(row, "FirstName"),
-                                 MiddleName = QueryProvider.RetrieveStringValue(row, "MiddleName"),
-                                 LastName = QueryProvider.RetrieveStringValue(row, "LastName"),
-                                 BirthDate = QueryProvider.RetrieveDateTimeValue(row, "BirthDate"),
-                                 City = QueryProvider.RetrieveStringValue(row, "City"),
-                                 Gender = QueryProvider.RetrieveStringValue(row, "Gender"),
-                                 MaritalStatus = QueryProvider.RetrieveStringValue(row, "MaritalStatus"),
-                                 ModifiedDate = QueryProvider.RetrieveDateTimeValue(row, "ModifiedDate"),
-                                 PostalCode = QueryProvider.RetrieveStringValue(row, "PostalCode"),
-                                 SalariedFlag = QueryProvider.RetrieveBooleanValue(row, "SalariedFlag"),
-                                 SickLeaveHours = QueryProvider.RetrieveIntValue(row, "SickLeaveHours"),
-                                 Title = QueryProvider.RetrieveStringValue(row, "Title"),
-                                 VacationHours = QueryProvider.RetrieveIntValue(row, "VacationHours"),
-                                 Rate = QueryProvider.RetrieveDecimalValue(row, "Rate")
+                                 Id = DataProvider.RetrieveIntValue(row, "ContactId"),
+                                 EmployeeId = DataProvider.RetrieveIntValue(row, "EmployeeId"),
+                                 FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
+                                 MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
+                                 LastName = DataProvider.RetrieveStringValue(row, "LastName"),
+                                 BirthDate = DataProvider.RetrieveDateTimeValue(row, "BirthDate"),
+                                 City = DataProvider.RetrieveStringValue(row, "City"),
+                                 Gender = DataProvider.RetrieveStringValue(row, "Gender"),
+                                 MaritalStatus = DataProvider.RetrieveStringValue(row, "MaritalStatus"),
+                                 ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate"),
+                                 PostalCode = DataProvider.RetrieveStringValue(row, "PostalCode"),
+                                 SalariedFlag = DataProvider.RetrieveBooleanValue(row, "SalariedFlag"),
+                                 SickLeaveHours = DataProvider.RetrieveIntValue(row, "SickLeaveHours"),
+                                 Title = DataProvider.RetrieveStringValue(row, "Title"),
+                                 VacationHours = DataProvider.RetrieveIntValue(row, "VacationHours"),
+                                 Rate = DataProvider.RetrieveDecimalValue(row, "Rate")
 
                              }).ToList();
             }
