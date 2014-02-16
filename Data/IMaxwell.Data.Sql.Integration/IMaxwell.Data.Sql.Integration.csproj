@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="ContactProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="EmployeeProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\IMaxwell.Core.Model\IMaxwell.Core.Model.csproj">
