@@ -23,7 +23,8 @@ namespace IMaxwell.UI.Mvc.Controllers
         // GET: /Contact/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var contact = ContactService.GetContact(id);
+            return View(contact);
         }
 
         //
@@ -54,7 +55,8 @@ namespace IMaxwell.UI.Mvc.Controllers
         // GET: /Contact/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var contact = ContactService.GetContact(id);
+            return View(contact);
         }
 
         //
