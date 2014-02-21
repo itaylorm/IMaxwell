@@ -21,6 +21,11 @@ namespace IMaxwell.Data.SqlServer
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
+        /// 
+        /// </summary>
+        public QueryProvider() : this("localhost", "iMaxwell") {}
+
+        /// <summary>
         /// Initializes underlying connection string
         /// </summary>
         /// <param name="serverName">Sql Server Name</param>
