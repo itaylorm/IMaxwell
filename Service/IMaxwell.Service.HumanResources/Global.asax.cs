@@ -6,7 +6,6 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Facilities.WcfIntegration;
 using Castle.Windsor.Installer;
-using IMaxwell.Core.Windsor;
 
 namespace IMaxwell.Service.HumanResources
 {

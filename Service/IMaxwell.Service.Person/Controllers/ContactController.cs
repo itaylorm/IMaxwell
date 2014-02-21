@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using IMaxwell.Core.Model;
-using IMaxwell.Data.Sql;
-using IMaxwell.Data.SqlServer;
+using IMaxwell.Core.Provider;
 
 namespace IMaxwell.Service.Person.Controllers
 {
@@ -13,8 +12,18 @@ namespace IMaxwell.Service.Person.Controllers
     /// </summary>
     public class ContactController : ApiController
     {
-        private const string ServerName = "localhost";
-        private const string DatabaseName = "iMaxwell";
+
+        private readonly IContactProvider _contactProvider;
+
+        /// <summary>
+        /// Configure controller to process requests to the specified 
+        /// Contact provider
+        /// </summary>
+        /// <param name="contactProvider">Provider to process requests</param>
+        public ContactController(IContactProvider contactProvider)
+        {
+            _contactProvider = contactProvider;
+        }
 
         /// <summary>
         /// Provides all contacts in the system
@@ -23,8 +32,7 @@ namespace IMaxwell.Service.Person.Controllers
         /// <returns>Returns the current contacts in system</returns>
         public IEnumerable<Contact> Get()
         {
-            var provider = new ContactProvider(new QueryProvider(ServerName, DatabaseName));
-            return provider.Retrieve().ToList();
+            return _contactProvider.Retrieve().ToList();
         }
 
 
@@ -36,9 +44,8 @@ namespace IMaxwell.Service.Person.Controllers
         /// <returns></returns>
         public List<Contact> Get(int start, int limit)
         {
-            var provider = new ContactProvider(new QueryProvider(ServerName, DatabaseName));
 
-            var allContacts = provider.Retrieve();
+            var allContacts = _contactProvider.Retrieve();
             var contacts = allContacts.Skip(start).Take(limit).ToList();
             return contacts;
 
@@ -54,9 +61,8 @@ namespace IMaxwell.Service.Person.Controllers
         /// <returns></returns>
         public ContactResult Get(int page, int start, int limit)
         {
-            var provider = new ContactProvider(new QueryProvider(ServerName, DatabaseName));
 
-            var contacts = provider.Retrieve().ToList();
+            var contacts = _contactProvider.Retrieve().ToList();
 
             return new ContactResult
             {
@@ -77,8 +83,7 @@ namespace IMaxwell.Service.Person.Controllers
         public Contact Get(int id)
         {
 
-            var provider = new ContactProvider(new QueryProvider(ServerName, DatabaseName));
-            return provider.Retrieve(id);
+            return _contactProvider.Retrieve(id);
 
         }
 

@@ -39,11 +39,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.2.2\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.WcfIntegration">
+      <HintPath>..\..\packages\Castle.WcfIntegrationFacility.3.2.0\lib\net45\Castle.Facilities.WcfIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -139,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Installers\WindsorWebApiInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +178,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Windsor.xml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -192,6 +210,10 @@
     <ProjectReference Include="..\..\Core\IMaxwell.Core.Provider\IMaxwell.Core.Provider.csproj">
       <Project>{3ECAEBE8-46D3-45D4-9384-435D5CCC8D51}</Project>
       <Name>IMaxwell.Core.Provider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\IMaxwell.Core.Windsor\IMaxwell.Core.Windsor.csproj">
+      <Project>{bcad0439-4d35-496d-8dff-944ac785a429}</Project>
+      <Name>IMaxwell.Core.Windsor</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\IMaxwell.Data.Core\IMaxwell.Data.Core.csproj">
       <Project>{14DE73A2-892E-4B1F-BABA-C499814F12D9}</Project>
