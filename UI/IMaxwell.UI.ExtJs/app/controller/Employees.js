@@ -1,14 +1,7 @@
 ﻿Ext.define('iMaxwell.controller.Employees', {
     extend: 'Ext.app.Controller',
     views: [
-        'tab.Employees',
-        'EmployeeList'
-    ],
-    models: [
-        'Employee'
-    ],
-    stores: [
-        'Employees'
+        'tab.Employees'
     ],
 
     init: function () {

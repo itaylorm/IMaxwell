@@ -1,14 +1,7 @@
 ﻿Ext.define('iMaxwell.controller.Contacts', {
     extend: 'Ext.app.Controller',
     views: [
-        'tab.Contacts',
-        'ContactList'
-    ],
-    models: [
-        'Contact'
-    ],
-    stores: [
-        'Contacts'
+        'tab.Contacts'
     ],
     
     init: function() {
