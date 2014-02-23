@@ -27,8 +27,6 @@
 
     onGridRender: function (grid, eOpts) {
         console.log('Employee Grid rendered');
-        //grid.store = this.getContacts();
-        //grid.store = this.getStore();
     }
 
 });

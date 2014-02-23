@@ -2,6 +2,7 @@
     extend: 'Ext.panel.Panel',
     alias: 'widget.employees',
     layout: 'fit',
+    title: 'Employees',
     items: [
         {
             xtype: 'employeelist'

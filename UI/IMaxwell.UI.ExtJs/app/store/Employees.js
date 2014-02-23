@@ -11,7 +11,7 @@
         reader: {
             type: 'json',
             root: 'Employees',
-            TotalProperty: 'Total' 
+            totalProperty: 'Total' 
         }
     }
 });

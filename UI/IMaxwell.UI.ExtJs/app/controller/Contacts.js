@@ -27,8 +27,6 @@
     
     onGridRender: function(grid, eOpts) {
         console.log('Contact Grid rendered');
-        //grid.store = this.getContacts();
-        //grid.store = this.getStore();
     }
     
 });
