@@ -1,7 +1,7 @@
 ﻿Ext.define('iMaxwell.model.Contact', {
     extend: 'Ext.data.Model',
     fields: [
-        'ContactId',
+        'Id',
         'FirstName',
         'MiddleName',
         'LastName'

@@ -4,7 +4,7 @@
     layout: 'fit',
     items: [
         {
-            xtype: 'contactList'
+            xtype: 'contactlist'
         }
     ]
 });

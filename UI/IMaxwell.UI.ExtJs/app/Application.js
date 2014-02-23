@@ -12,7 +12,8 @@
         'Main',
         'MainMenu',
         'MainTab',
-        'Contacts'
+        'Contacts',
+        'Employees'
     ],
     
     stores: [

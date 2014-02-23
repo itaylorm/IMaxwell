@@ -1,17 +1,17 @@
-﻿Ext.define('iMaxwell.controller.Contacts', {
+﻿Ext.define('iMaxwell.controller.Employees', {
     extend: 'Ext.app.Controller',
     views: [
-        'tab.Contacts',
-        'ContactList'
+        'tab.Employees',
+        'EmployeeList'
     ],
     models: [
-        'Contact'
+        'Employee'
     ],
     stores: [
-        'Contacts'
+        'Employees'
     ],
-    
-    init: function() {
+
+    init: function () {
 
         this.control({
             'grid': {
@@ -20,15 +20,15 @@
             }
         });
     },
-    
-    onGridInit: function(grid) {
-        console.log('Contact Grid initialized');
+
+    onGridInit: function (grid) {
+        console.log('Employee Grid initialized');
     },
-    
-    onGridRender: function(grid, eOpts) {
-        console.log('Contact Grid rendered');
+
+    onGridRender: function (grid, eOpts) {
+        console.log('Employee Grid rendered');
         //grid.store = this.getContacts();
         //grid.store = this.getStore();
     }
-    
+
 });

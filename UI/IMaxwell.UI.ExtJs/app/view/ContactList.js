@@ -1,6 +1,6 @@
 ﻿Ext.define('iMaxwell.view.ContactList', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.contactList',
+    alias: 'widget.contactlist',
     requires: [
         'iMaxwell.store.Contacts'
     ],
@@ -8,7 +8,7 @@
     columns: [
         {
             header: 'ID',
-            dataIndex: 'ContactId'
+            dataIndex: 'Id'
         },
         {
             header: 'First',
@@ -24,8 +24,6 @@
         }
     ],
     initComponent: function () {
-
-        debugger;
         
         var me = this;
         var store = Ext.create('iMaxwell.store.Contacts');
