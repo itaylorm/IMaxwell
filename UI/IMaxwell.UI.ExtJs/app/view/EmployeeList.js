@@ -4,7 +4,7 @@
     requires: [
         'iMaxwell.store.Employees'
     ],
-    itemId:'employeeList',
+    itemId: 'employeeList',
     frame: true,
     columns: [
         {
@@ -30,12 +30,9 @@
     ],
     initComponent: function() {
 
-        console.log('employee data loading');
-
         var me = this;
         var store = Ext.create('iMaxwell.store.Employees');
         me.store = store;
-        store.load();
 
         this.bbar = Ext.create('Ext.toolbar.Paging', {
             store: store,

@@ -21,7 +21,11 @@
     },
 
     onGridRender: function (grid, eOpts) {
+
+        grid.getStore().load();
+
         console.log('Employee Grid rendered');
+
     }
 
 });

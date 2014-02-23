@@ -20,8 +20,12 @@
         });
     },
     
-    onGridRender: function(grid, eOpts) {
+    onGridRender: function (grid, eOpts) {
+
+        grid.getStore().load();
+
         console.log('Contact Grid rendered');
+
     }
     
 });

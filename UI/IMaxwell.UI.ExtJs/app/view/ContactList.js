@@ -31,7 +31,6 @@
         var me = this;
         var store = Ext.create('iMaxwell.store.Contacts');
         me.store = store;
-        store.load();
 
         this.bbar = Ext.create('Ext.toolbar.Paging', {
             store: store,
