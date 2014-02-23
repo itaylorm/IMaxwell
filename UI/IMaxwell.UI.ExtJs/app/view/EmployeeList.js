@@ -4,6 +4,7 @@
     requires: [
         'iMaxwell.store.Employees'
     ],
+    itemId:'employeeList',
     frame: true,
     columns: [
         {
@@ -28,6 +29,8 @@
         }
     ],
     initComponent: function() {
+
+        console.log('employee data loading');
 
         var me = this;
         var store = Ext.create('iMaxwell.store.Employees');

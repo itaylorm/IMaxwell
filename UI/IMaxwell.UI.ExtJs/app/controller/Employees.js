@@ -14,15 +14,10 @@
     init: function () {
 
         this.control({
-            'grid': {
-                render: this.onGridRender,
-                init: this.onGridInit
+            'grid#employeeList': {
+                render: this.onGridRender
             }
         });
-    },
-
-    onGridInit: function (grid) {
-        console.log('Employee Grid initialized');
     },
 
     onGridRender: function (grid, eOpts) {

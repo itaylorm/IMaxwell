@@ -5,6 +5,7 @@
         'iMaxwell.store.Contacts'
     ],
     frame: true,
+    itemId:'contactList',
     columns: [
         {
             header: 'ID',
@@ -24,7 +25,9 @@
         }
     ],
     initComponent: function () {
-        
+
+        console.log('contact data loading');
+
         var me = this;
         var store = Ext.create('iMaxwell.store.Contacts');
         me.store = store;

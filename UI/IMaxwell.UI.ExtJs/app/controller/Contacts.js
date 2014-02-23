@@ -14,15 +14,10 @@
     init: function() {
 
         this.control({
-            'grid': {
-                render: this.onGridRender,
-                init: this.onGridInit
+            'grid#contactList': {
+                render: this.onGridRender
             }
         });
-    },
-    
-    onGridInit: function(grid) {
-        console.log('Contact Grid initialized');
     },
     
     onGridRender: function(grid, eOpts) {
