@@ -3,6 +3,9 @@
     alias: 'widget.contacts',
     layout: 'fit',
     title: 'Contacts',
+    requires: [
+        'iMaxwell.store.Contacts'
+    ],
     initComponent: function() {
 
         this.callParent(arguments);

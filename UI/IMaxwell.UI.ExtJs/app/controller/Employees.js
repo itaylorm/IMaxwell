@@ -1,5 +1,8 @@
 ﻿Ext.define('iMaxwell.controller.Employees', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'iMaxwell.store.Employees'
+    ],
     views: [
         'tab.Employees'
     ],

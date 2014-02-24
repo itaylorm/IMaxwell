@@ -3,6 +3,10 @@
     alias: 'widget.employees',
     layout: 'fit',
     title: 'Employees',
+    requires: [
+        'Ext.toolbar.Paging',
+        'Ext.grid.column.Date'
+    ],
     initComponent: function() {
 
         this.callParent(arguments);

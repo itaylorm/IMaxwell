@@ -1,5 +1,9 @@
 ﻿Ext.define('iMaxwell.controller.MainTab', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'Ext.grid.Panel',
+        'iMaxwell.view.AbstractGrid'
+    ],
     views: [
         'tab.MainTab'
     ],
@@ -21,6 +25,9 @@
 
         var employees = Ext.create('iMaxwell.view.tab.Employees');
         panel.add(employees);
+
+        var test = Ext.create('iMaxwell.view.AbstractGrid');
+        panel.add(test);
 
     }
 });

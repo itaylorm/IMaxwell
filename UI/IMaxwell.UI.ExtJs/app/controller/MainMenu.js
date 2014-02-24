@@ -1,5 +1,8 @@
 ﻿Ext.define('iMaxwell.controller.MainMenu', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'Ext.layout.container.Accordion'
+    ],
     views: [
         'menu.MainMenu'
     ],

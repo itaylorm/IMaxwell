@@ -1,4 +1,11 @@
-﻿Ext.define('iMaxwell.Application', {
+﻿Ext.Loader.setConfig({
+    enabled: true,
+    paths: {
+        'Ext.ux': 'ux',
+    }
+});
+
+Ext.define('iMaxwell.Application', {
     name: 'iMaxwell',
     extend: 'Ext.app.Application',
 
