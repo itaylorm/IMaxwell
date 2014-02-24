@@ -1,4 +1,7 @@
-﻿namespace IMaxwell.Core.Model
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace IMaxwell.Core.Model
 {
 
     /// <summary>
@@ -26,6 +29,12 @@
         /// Last Name
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Modified Date
+        /// </summary>
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime ModifiedDate { get; set; }
 
     }
 

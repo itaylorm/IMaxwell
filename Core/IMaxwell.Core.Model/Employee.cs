@@ -51,12 +51,6 @@ namespace IMaxwell.Core.Model
         public DateTime BirthDate { get; set; }
 
         /// <summary>
-        /// Modified Date
-        /// </summary>
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
         /// City
         /// </summary>
         public string City { get; set; }

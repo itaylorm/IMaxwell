@@ -29,12 +29,14 @@ namespace IMaxwell.Data.Sql.Test
             dataTable.Columns.Add(new DataColumn("FirstName", typeof(string)));
             dataTable.Columns.Add(new DataColumn("MiddleName", typeof(string)));
             dataTable.Columns.Add(new DataColumn("LastName", typeof(string)));
+            dataTable.Columns.Add(new DataColumn("ModifiedDate", typeof (DateTime)));
 
             var taylorRow = dataTable.NewRow();
             taylorRow["ContactID"] = 1;
             taylorRow["FirstName"] = "Taylor";
             taylorRow["MiddleName"] = "H";
             taylorRow["LastName"] = "Maxwell";
+            taylorRow["ModifiedDate"] = DateTime.Now;
             dataTable.Rows.Add(taylorRow);
 
             queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(dataTable).Verifiable("RetrieveData was not called");
@@ -47,6 +49,7 @@ namespace IMaxwell.Data.Sql.Test
             Assert.AreEqual(taylorRow["FirstName"], contact.FirstName);
             Assert.AreEqual(taylorRow["MiddleName"], contact.MiddleName);
             Assert.AreEqual(taylorRow["LastName"], contact.LastName);
+            Assert.AreEqual(taylorRow["ModifiedDate"].ToString(), contact.ModifiedDate.ToString());
 
         }
 
@@ -66,12 +69,14 @@ namespace IMaxwell.Data.Sql.Test
             dataTable.Columns.Add(new DataColumn("FirstName", typeof(string)));
             dataTable.Columns.Add(new DataColumn("MiddleName", typeof(string)));
             dataTable.Columns.Add(new DataColumn("LastName", typeof(string)));
+            dataTable.Columns.Add(new DataColumn("ModifiedDate", typeof(DateTime)));
 
             var taylorRow = dataTable.NewRow();
             taylorRow["ContactID"] = 1;
             taylorRow["FirstName"] = "Taylor";
             taylorRow["MiddleName"] = "H";
             taylorRow["LastName"] = "Maxwell";
+            taylorRow["ModifiedDate"] = DateTime.Now;
             dataTable.Rows.Add(taylorRow);
 
             var marciaRow = dataTable.NewRow();
@@ -79,6 +84,7 @@ namespace IMaxwell.Data.Sql.Test
             marciaRow["FirstName"] = "Marcia";
             marciaRow["MiddleName"] = "L";
             marciaRow["LastName"] = "Maxwell";
+            marciaRow["ModifiedDate"] = DateTime.Now;
             dataTable.Rows.Add(marciaRow);
 
             var robynRow = dataTable.NewRow();
@@ -86,6 +92,7 @@ namespace IMaxwell.Data.Sql.Test
             robynRow["FirstName"] = "Robyn";
             robynRow["MiddleName"] = "E";
             robynRow["LastName"] = "Maxwell";
+            robynRow["ModifiedDate"] = DateTime.Now;
             dataTable.Rows.Add(robynRow);
 
             queryProvider.Setup(q => q.RetrieveData(It.IsAny<string>())).Returns(dataTable).Verifiable("RetrieveData was not called");
@@ -100,18 +107,21 @@ namespace IMaxwell.Data.Sql.Test
             Assert.AreEqual(taylorRow["FirstName"], contactTaylor.FirstName);
             Assert.AreEqual(taylorRow["MiddleName"], contactTaylor.MiddleName);
             Assert.AreEqual(taylorRow["LastName"], contactTaylor.LastName);
+            Assert.AreEqual(taylorRow["ModifiedDate"].ToString(), contactTaylor.ModifiedDate.ToString());
 
             var contactMarcia = contacts.ElementAt(1);
             Assert.AreEqual(marciaRow["ContactID"], contactMarcia.Id);
             Assert.AreEqual(marciaRow["FirstName"], contactMarcia.FirstName);
             Assert.AreEqual(marciaRow["MiddleName"], contactMarcia.MiddleName);
             Assert.AreEqual(marciaRow["LastName"], contactMarcia.LastName);
+            Assert.AreEqual(marciaRow["ModifiedDate"].ToString(), contactMarcia.ModifiedDate.ToString());
 
             var contactRobyn = contacts.ElementAt(2);
             Assert.AreEqual(robynRow["ContactID"], contactRobyn.Id);
             Assert.AreEqual(robynRow["FirstName"], contactRobyn.FirstName);
             Assert.AreEqual(robynRow["MiddleName"], contactRobyn.MiddleName);
             Assert.AreEqual(robynRow["LastName"], contactRobyn.LastName);
+            Assert.AreEqual(robynRow["ModifiedDate"].ToString(), contactRobyn.ModifiedDate.ToString());
 
         }
 

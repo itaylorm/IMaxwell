@@ -53,7 +53,8 @@ namespace IMaxwell.Data.Entity
                               Id = c.ContactID,
                               FirstName = c.FirstName,
                               MiddleName = c.MiddleName,
-                              LastName = c.LastName
+                              LastName = c.LastName,
+                              ModifiedDate = c.ModifiedDate
                           }).FirstOrDefault();
 
             }
@@ -84,7 +85,8 @@ namespace IMaxwell.Data.Entity
                                Id = c.ContactID,
                                FirstName = c.FirstName,
                                MiddleName = c.MiddleName,
-                               LastName = c.LastName
+                               LastName = c.LastName,
+                               ModifiedDate = c.ModifiedDate
                            }).ToList();
 
             }

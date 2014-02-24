@@ -1,9 +1,30 @@
-﻿.delete {
-    background-image: url('../icons/delete.png') !important
+﻿/** Icons */
+.add {
+  background-image:url('../icons/add.png') !important;
 }
 
-.x-action-col-cell img {
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
+.cancel {
+  background-image:url('../icons/cancel.png') !important;
 }
+
+.contacts {
+    background-image: url('../icons/contacts.png') !important;    
+}
+
+.delete {
+    background-image: url('../icons/delete.png') !important;
+}
+
+.employees {
+    background-image: url('../icons/employees.png') !important;
+}
+
+.clear_filter {
+  background-image:url('../icons/clear_filter.gif') !important;
+}
+
+.save_all {
+  background-image:url('../icons/save_all.png') !important;
+}
+
+

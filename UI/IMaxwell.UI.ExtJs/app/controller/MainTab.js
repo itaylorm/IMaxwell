@@ -26,8 +26,6 @@
         var employees = Ext.create('iMaxwell.view.tab.Employees');
         panel.add(employees);
 
-        var test = Ext.create('iMaxwell.view.grid.AbstractGrid');
-        panel.add(test);
 
     }
 });

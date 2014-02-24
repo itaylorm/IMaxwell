@@ -4,6 +4,7 @@
         'Id',
         'FirstName',
         'MiddleName',
-        'LastName'
+        'LastName',
+        'ModifiedDate'
     ]
 });

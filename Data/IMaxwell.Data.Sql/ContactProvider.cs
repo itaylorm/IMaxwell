@@ -49,7 +49,8 @@ namespace IMaxwell.Data.Sql
                                Id = DataProvider.RetrieveIntValue(row, "ContactId"),
                                FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
                                MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
-                               LastName = DataProvider.RetrieveStringValue(row, "LastName")
+                               LastName = DataProvider.RetrieveStringValue(row, "LastName"),
+                               ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate")
                            }).FirstOrDefault();
 
             }
@@ -80,8 +81,8 @@ namespace IMaxwell.Data.Sql
                                 Id = DataProvider.RetrieveIntValue(row, "ContactId"),
                                 FirstName = DataProvider.RetrieveStringValue(row, "FirstName"),
                                 MiddleName = DataProvider.RetrieveStringValue(row, "MiddleName"),
-                                LastName = DataProvider.RetrieveStringValue(row, "LastName")
-
+                                LastName = DataProvider.RetrieveStringValue(row, "LastName"),
+                                ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate")
                             }).ToList();
             }
             catch (Exception ex)

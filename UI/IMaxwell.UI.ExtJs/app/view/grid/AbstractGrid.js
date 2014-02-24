@@ -1,12 +1,11 @@
 ﻿Ext.define('iMaxwell.view.grid.AbstractGrid', {
     extend: 'Ext.ux.LiveSearchGridPanel',
-    alias: 'widget.staticdatagrid',
+    alias: 'widget.abstractgrid',
     requires: [
         'Ext.grid.plugin.CellEditing',
         'Ext.ux.grid.FiltersFeature',
         'Ext.grid.column.Action'
     ],
-    title: 'Search Grid',
     columnLines: true,
     viewConfig: {
         stripeRows: true
@@ -14,14 +13,6 @@
 
     initComponent: function () {
         var me = this;
-
-         //This is required to instantiate this type directly
-         //Normal you inherit from this class and add a column before running
-        me.columns = [
-            {
-                header: 'Temporary while configuring'
-            }
-        ];
 
         me.selModel = {
             selType: 'cellmodel'
@@ -83,11 +74,10 @@
         me.columns = Ext.Array.merge(me.columns,
             [{
                 xtype: 'datecolumn',
-                text: 'Last Update',
+                text: 'Modified',
                 width: 120,
-                dataIndex: 'last_update',
-                format: 'Y-m-j H:i:s',
-                filter: true
+                dataIndex: 'ModifiedDate',
+                filter: {type: 'date'}
             },
             {
                 xtype: 'actioncolumn',

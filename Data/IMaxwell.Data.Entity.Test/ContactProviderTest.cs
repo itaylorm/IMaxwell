@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,9 +25,9 @@ namespace IMaxwell.Data.Entity.Test
 
             var data = new List<Contact> 
             { 
-                new Contact { ContactID=1, FirstName = "Taylor", MiddleName ="H", LastName = "Maxwell"}, 
-                new Contact { ContactID=2, FirstName = "Marcia", MiddleName = "L", LastName = "Maxwell"}, 
-                new Contact { ContactID=3, FirstName = "Robyn", MiddleName = "E", LastName = "Maxwell"}, 
+                new Contact { ContactID=1, FirstName = "Taylor", MiddleName ="H", LastName = "Maxwell", ModifiedDate = DateTime.Now }, 
+                new Contact { ContactID=2, FirstName = "Marcia", MiddleName = "L", LastName = "Maxwell", ModifiedDate = DateTime.Now }, 
+                new Contact { ContactID=3, FirstName = "Robyn", MiddleName = "E", LastName = "Maxwell", ModifiedDate = DateTime.Now }, 
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Contact>>();
@@ -46,23 +47,28 @@ namespace IMaxwell.Data.Entity.Test
             Assert.AreEqual(3, contacts.Count());
 
             var contactTaylor = contacts.ElementAt(0);
-            Assert.AreEqual(1, contactTaylor.Id);
-            Assert.AreEqual("Taylor", contactTaylor.FirstName);
-            Assert.AreEqual("H", contactTaylor.MiddleName);
-            Assert.AreEqual("Maxwell", contactTaylor.LastName);
+            var originalTaylor = data.ElementAt(0);
+            Assert.AreEqual(originalTaylor.ContactID, contactTaylor.Id);
+            Assert.AreEqual(originalTaylor.FirstName, contactTaylor.FirstName);
+            Assert.AreEqual(originalTaylor.MiddleName, contactTaylor.MiddleName);
+            Assert.AreEqual(originalTaylor.LastName, contactTaylor.LastName);
+            Assert.AreEqual(originalTaylor.ModifiedDate, contactTaylor.ModifiedDate);
 
             var contactMarcia = contacts.ElementAt(1);
-            Assert.AreEqual(2, contactMarcia.Id);
-            Assert.AreEqual("Marcia", contactMarcia.FirstName);
-            Assert.AreEqual("L", contactMarcia.MiddleName);
-            Assert.AreEqual("Maxwell", contactMarcia.LastName);
+            var originalMarcia = data.ElementAt(1);
+            Assert.AreEqual(originalMarcia.ContactID, contactMarcia.Id);
+            Assert.AreEqual(originalMarcia.FirstName, contactMarcia.FirstName);
+            Assert.AreEqual(originalMarcia.MiddleName, contactMarcia.MiddleName);
+            Assert.AreEqual(originalMarcia.LastName, contactMarcia.LastName);
+            Assert.AreEqual(originalMarcia.ModifiedDate, contactMarcia.ModifiedDate);
 
             var contactRobyn = contacts.ElementAt(2);
-            Assert.AreEqual(3, contactRobyn.Id);
-            Assert.AreEqual("Robyn", contactRobyn.FirstName);
-            Assert.AreEqual("E", contactRobyn.MiddleName);
-            Assert.AreEqual("Maxwell", contactRobyn.LastName);
-
+            var originalRobyn = data.ElementAt(2);
+            Assert.AreEqual(originalRobyn.ContactID, contactRobyn.Id);
+            Assert.AreEqual(originalRobyn.FirstName, contactRobyn.FirstName);
+            Assert.AreEqual(originalRobyn.MiddleName, contactRobyn.MiddleName);
+            Assert.AreEqual(originalRobyn.LastName, contactRobyn.LastName);
+            Assert.AreEqual(originalRobyn.ModifiedDate, contactRobyn.ModifiedDate);
 
         }
 
@@ -76,7 +82,7 @@ namespace IMaxwell.Data.Entity.Test
 
             var data = new List<Contact> 
             { 
-                new Contact { ContactID=1, FirstName = "Taylor", MiddleName ="H", LastName = "Maxwell"}
+                new Contact { ContactID=1, FirstName = "Taylor", MiddleName ="H", LastName = "Maxwell", ModifiedDate = DateTime.Now}
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Contact>>();
@@ -94,10 +100,12 @@ namespace IMaxwell.Data.Entity.Test
 
             Assert.IsNotNull(contact);
 
-            Assert.AreEqual(1, contact.Id);
-            Assert.AreEqual("Taylor", contact.FirstName);
-            Assert.AreEqual("H", contact.MiddleName);
-            Assert.AreEqual("Maxwell", contact.LastName);
+            var originalTaylor = data.ElementAt(0);
+            Assert.AreEqual(originalTaylor.ContactID, contact.Id);
+            Assert.AreEqual(originalTaylor.FirstName, contact.FirstName);
+            Assert.AreEqual(originalTaylor.MiddleName, contact.MiddleName);
+            Assert.AreEqual(originalTaylor.LastName, contact.LastName);
+            Assert.AreEqual(originalTaylor.ModifiedDate, contact.ModifiedDate);
 
         }
     }

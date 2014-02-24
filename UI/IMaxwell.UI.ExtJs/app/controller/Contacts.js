@@ -7,7 +7,7 @@
     init: function() {
 
         this.control({
-            'grid#contactList': {
+            'abstractgrid#contactGrid': {
                 render: this.onGridRender
             }
         });

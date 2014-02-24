@@ -10,7 +10,7 @@
     init: function () {
 
         this.control({
-            'grid#employeeList': {
+            'abstractgrid#employeeGrid': {
                 render: this.onGridRender
             }
         });

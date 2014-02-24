@@ -77,6 +77,8 @@
     <Content Include="app\store\Contacts.js" />
     <Content Include="app\store\Employees.js" />
     <Content Include="app\view\grid\AbstractGrid.js" />
+    <Content Include="app\view\grid\ContactGrid.js" />
+    <Content Include="app\view\grid\EmployeeGrid.js" />
     <Content Include="app\view\Header.js" />
     <Content Include="app\view\menu\MainMenu.js" />
     <Content Include="app\view\tab\Contacts.js" />
@@ -88,16 +90,22 @@
     <Content Include="ext\ext-debug.js" />
     <Content Include="ext\ext-dev.js" />
     <Content Include="index.html" />
+    <Content Include="resources\css\AbstractGrid.css" />
     <Content Include="resources\css\app.css" />
+    <Content Include="resources\icons\add.png" />
+    <Content Include="resources\icons\cancel.png" />
     <Content Include="resources\icons\delete.png" />
+    <Content Include="resources\icons\save_all.png" />
+    <Content Include="resources\icons\clear_filter.gif" />
+    <Content Include="resources\icons\employees.png" />
+    <Content Include="resources\icons\contacts.png" />
+    <Content Include="ux\css\LiveSearchGridPanel.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ux\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
