@@ -2,7 +2,7 @@
     extend: 'Ext.app.Controller',
     requires: [
         'Ext.grid.Panel',
-        'iMaxwell.view.AbstractGrid'
+        'iMaxwell.view.grid.AbstractGrid'
     ],
     views: [
         'tab.MainTab'
@@ -26,7 +26,7 @@
         var employees = Ext.create('iMaxwell.view.tab.Employees');
         panel.add(employees);
 
-        var test = Ext.create('iMaxwell.view.AbstractGrid');
+        var test = Ext.create('iMaxwell.view.grid.AbstractGrid');
         panel.add(test);
 
     }

@@ -1,4 +1,4 @@
-﻿Ext.define('iMaxwell.view.AbstractGrid', {
+﻿Ext.define('iMaxwell.view.grid.AbstractGrid', {
     extend: 'Ext.ux.LiveSearchGridPanel',
     alias: 'widget.staticdatagrid',
     requires: [
@@ -15,13 +15,13 @@
     initComponent: function () {
         var me = this;
 
-        // This is required to instantiate this type directly
-        // Normal you inherit from this class and add a column before running
-        //me.columns = [
-        //    {
-        //        header: 'Temporary while configuring'
-        //    }
-        //];
+         //This is required to instantiate this type directly
+         //Normal you inherit from this class and add a column before running
+        me.columns = [
+            {
+                header: 'Temporary while configuring'
+            }
+        ];
 
         me.selModel = {
             selType: 'cellmodel'
@@ -40,8 +40,8 @@
             })
         ];
         
-        me.dockedItems = [
-            {
+        me.dockedItems = Ext.Array.merge(me.dockedItems,
+            [{
                 xtype: 'toolbar',
                 dock: 'top',
                 itemId: 'topToolbar',
@@ -77,8 +77,8 @@
                          iconCls: 'clear_filter'
                      }
                 ]
-            }
-        ];
+            }]
+        );
 
         me.columns = Ext.Array.merge(me.columns,
             [{
