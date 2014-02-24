@@ -12,6 +12,9 @@
         this.control({
             'abstractgrid#employeeGrid': {
                 render: this.onGridRender
+            },
+            'abstractgrid#employeeGrid #clearFilter': {
+                click: this.onButtonClickClearFilter
             }
         });
     },
@@ -22,6 +25,10 @@
 
         console.log('Employee Grid rendered');
 
-    }
+    },
+    onButtonClickClearFilter: function (button, e, options) {
 
+        button.up('abstractgrid#employeeGrid').filters.clearFilters();
+
+    }
 });

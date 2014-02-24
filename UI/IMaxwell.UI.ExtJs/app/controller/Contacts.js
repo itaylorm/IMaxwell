@@ -9,6 +9,9 @@
         this.control({
             'abstractgrid#contactGrid': {
                 render: this.onGridRender
+            },
+            'abstractgrid#contactGrid #clearFilter': {
+                click: this.onButtonClickClearFilter
             }
         });
     },
@@ -18,6 +21,11 @@
         grid.getStore().load();
 
         console.log('Contact Grid rendered');
+
+    },
+    onButtonClickClearFilter: function (button, e, options) {
+
+        button.up('abstractgrid#contactGrid').filters.clearFilters();
 
     }
     
