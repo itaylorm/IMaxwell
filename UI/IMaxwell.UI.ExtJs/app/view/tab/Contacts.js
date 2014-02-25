@@ -4,6 +4,7 @@
     layout: 'fit',
     iconCls: 'contacts',
     title: 'Contacts',
+    closable: true,
     requires: [
         'iMaxwell.view.grid.ContactGrid'
     ],

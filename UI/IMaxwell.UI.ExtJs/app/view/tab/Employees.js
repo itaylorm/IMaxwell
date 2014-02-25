@@ -4,6 +4,7 @@
     layout: 'fit',
     iconCls: 'employees',
     title: 'Employees',
+    closable: true,
     requires: [
         'iMaxwell.view.grid.EmployeeGrid'
     ],

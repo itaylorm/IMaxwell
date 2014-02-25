@@ -11,7 +11,8 @@
         
         this.control({
             'maintab': {
-                render: this.onMainTabRendered
+                render: this.onMainTabRendered,
+                tabchange : this.onMainTabChanged
             }
         });
     },
@@ -22,10 +23,16 @@
 
         var contacts = Ext.create('iMaxwell.view.tab.Contacts');
         panel.add(contacts);
+        panel.setActiveTab(contacts);
 
         var employees = Ext.create('iMaxwell.view.tab.Employees');
         panel.add(employees);
 
+    },
+    onMainTabChanged: function(panel, newTab, oldTab, eOpts) {
+
+        panel.setActiveTab(newTab);
 
     }
+
 });
