@@ -80,6 +80,7 @@
     <Content Include="app\view\grid\ContactGrid.js" />
     <Content Include="app\view\grid\EmployeeGrid.js" />
     <Content Include="app\view\Header.js" />
+    <Content Include="app\view\menu\Item.js" />
     <Content Include="app\view\menu\MainMenu.js" />
     <Content Include="app\view\tab\Contacts.js" />
     <Content Include="app\view\tab\Employees.js" />
