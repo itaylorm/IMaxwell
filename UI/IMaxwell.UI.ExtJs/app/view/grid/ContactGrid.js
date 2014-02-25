@@ -38,7 +38,14 @@
                 dock: 'bottom',
                 displayInfo: true,
                 displayMsg: 'Contacts {0} - {1} of {2}',
-                emptyMsg: 'No Contacts'
+                emptyMsg: 'No Contacts',
+                features: [
+                    {
+                        ftype: 'filters',
+                        encode: true,
+                        local:false
+                    }
+                ]
             }
         ];
 
