@@ -21,13 +21,6 @@
 
         console.log('Tab Panel Rendered');
 
-        //var contacts = Ext.create('iMaxwell.view.tab.Contacts');
-        //panel.add(contacts);
-        //panel.setActiveTab(contacts);
-
-        //var employees = Ext.create('iMaxwell.view.tab.Employees');
-        //panel.add(employees);
-
     },
     onMainTabChanged: function(panel, newTab, oldTab, eOpts) {
 

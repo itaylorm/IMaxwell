@@ -20,6 +20,7 @@ Ext.define('iMaxwell.Application', {
         'MainMenu',
         'MainTab',
         'Contacts',
+        'ContactDetail',
         'Employees'
     ],
     

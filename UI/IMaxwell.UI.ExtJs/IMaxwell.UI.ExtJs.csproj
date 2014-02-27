@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
+    <Content Include="app\controller\ContactDetail.js" />
     <Content Include="app\controller\Contacts.js" />
     <Content Include="app\controller\Employees.js" />
     <Content Include="app\controller\Main.js" />
@@ -74,6 +75,7 @@
     <Content Include="app\controller\MainTab.js" />
     <Content Include="app\model\Contact.js" />
     <Content Include="app\model\Employee.js" />
+    <Content Include="app\store\ContactDetail.js" />
     <Content Include="app\store\Contacts.js" />
     <Content Include="app\store\Employees.js" />
     <Content Include="app\view\grid\AbstractGrid.js" />
@@ -82,6 +84,7 @@
     <Content Include="app\view\Header.js" />
     <Content Include="app\view\menu\Item.js" />
     <Content Include="app\view\menu\MainMenu.js" />
+    <Content Include="app\view\tab\ContactDetail.js" />
     <Content Include="app\view\tab\Contacts.js" />
     <Content Include="app\view\tab\Employees.js" />
     <Content Include="app\view\tab\MainTab.js" />
