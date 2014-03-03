@@ -105,6 +105,7 @@
     <Content Include="resources\icons\contacts.png" />
     <Content Include="SpecRunner.html" />
     <Content Include="spec\model\Contact.js" />
+    <Content Include="spec\model\Employee.js" />
     <Content Include="ux\css\LiveSearchGridPanel.css" />
     <Content Include="Web.config" />
   </ItemGroup>
