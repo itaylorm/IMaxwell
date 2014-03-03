@@ -104,6 +104,12 @@
     <Content Include="resources\icons\employees.png" />
     <Content Include="resources\icons\contacts.png" />
     <Content Include="SpecRunner.html" />
+    <Content Include="spec\controller\ContactDetail.js" />
+    <Content Include="spec\controller\Contacts.js" />
+    <Content Include="spec\controller\Employees.js" />
+    <Content Include="spec\controller\Main.js" />
+    <Content Include="spec\controller\MainMenu.js" />
+    <Content Include="spec\controller\MainTab.js" />
     <Content Include="spec\model\Contact.js" />
     <Content Include="spec\model\Employee.js" />
     <Content Include="spec\core.js" />
