@@ -4,7 +4,8 @@
     requires: [
         'Ext.grid.plugin.CellEditing',
         'Ext.ux.grid.FiltersFeature',
-        'Ext.grid.column.Action'
+        'Ext.grid.column.Action',
+        'Ext.grid.column.Date'
     ],
     columnLines: true,
     viewConfig: {
@@ -70,6 +71,15 @@
                 ]
             }]
         );
+
+        if (me.columns == undefined)
+        {
+            me.columns = [
+                {
+                    text:'test'
+                }
+            ];
+        }
 
         me.columns = Ext.Array.merge(me.columns,
             [{

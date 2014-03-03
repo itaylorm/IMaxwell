@@ -107,6 +107,9 @@
     <Content Include="spec\model\Contact.js" />
     <Content Include="spec\model\Employee.js" />
     <Content Include="spec\core.js" />
+    <Content Include="spec\view\grid\AbstractGrid.js" />
+    <Content Include="spec\view\grid\ContactGrid.js" />
+    <Content Include="spec\view\grid\EmployeeGrid.js" />
     <Content Include="spec\view\Header.js" />
     <Content Include="ux\css\LiveSearchGridPanel.css" />
     <Content Include="Web.config" />
