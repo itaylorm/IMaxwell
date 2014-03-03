@@ -103,6 +103,8 @@
     <Content Include="resources\icons\clear_filter.gif" />
     <Content Include="resources\icons\employees.png" />
     <Content Include="resources\icons\contacts.png" />
+    <Content Include="SpecRunner.html" />
+    <Content Include="spec\model\Contact.js" />
     <Content Include="ux\css\LiveSearchGridPanel.css" />
     <Content Include="Web.config" />
   </ItemGroup>
