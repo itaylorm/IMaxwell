@@ -124,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -134,12 +133,15 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Contact\ContactService.cs" />
     <Compile Include="Views\Employee\EmployeeService.cs" />
+    <Compile Include="Views\Product\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -180,6 +182,10 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\CategoriesUserControl.cshtml" />
+    <Content Include="Views\Product\SubCategoriesUserControl.cshtml" />
+    <Content Include="Views\Product\ProductsUserControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\IMaxwell.Core.Model\IMaxwell.Core.Model.csproj">

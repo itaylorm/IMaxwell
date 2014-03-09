@@ -1,0 +1,9 @@
+﻿@model IMaxwell.UI.Mvc.Models.ProductCatalog
+@if (Model.Products != null && Model.Products.Any())
+{
+    @Html.DropDownList(
+        "Products",
+            new SelectList(Model.Products, "Id", "Name"),
+            string.Empty
+            )
+}
