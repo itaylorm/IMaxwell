@@ -63,6 +63,7 @@
     <Compile Include="BillOfMaterial.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
+    <Compile Include="CategoryProvider.cs" />
     <Compile Include="Contact.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
@@ -179,6 +180,7 @@
     <Compile Include="ProductProductPhoto.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductProvider.cs" />
     <Compile Include="ProductReview.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
@@ -249,6 +251,7 @@
     <Compile Include="StoreContact.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubCategoryProvider.cs" />
     <Compile Include="TransactionHistory.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>

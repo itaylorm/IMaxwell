@@ -99,4 +99,5 @@ namespace IMaxwell.Data.Entity
         }
 
     }
+
 }

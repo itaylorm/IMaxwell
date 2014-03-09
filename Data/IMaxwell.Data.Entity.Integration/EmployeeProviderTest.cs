@@ -26,7 +26,7 @@ namespace IMaxwell.Data.Entity.Integration
         }
 
         /// <summary>
-        /// Ensure that the contact provider returns the associated employee
+        /// Ensure that the employee provider returns the associated employee
         /// </summary>
         [TestMethod]
         public void RetrieveEmployeeTest()

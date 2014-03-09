@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="ContactResult.cs" />
     <Compile Include="CurrencyDisplayAttribute.cs" />
@@ -76,7 +77,9 @@
     <Compile Include="EmployeeResult.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

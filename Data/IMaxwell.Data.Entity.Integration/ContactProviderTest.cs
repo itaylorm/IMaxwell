@@ -4,9 +4,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IMaxwell.Data.Entity.Integration
 {
+
+    /// <summary>
+    /// Integrated tests for contact provider
+    /// </summary>
     [TestClass]
     public class ContactProviderTest
     {
+
+        /// <summary>
+        /// Ensure that contacts are returned by retrieve list
+        /// </summary>
         [TestMethod]
         public void RetrieveContactsTest()
         {
