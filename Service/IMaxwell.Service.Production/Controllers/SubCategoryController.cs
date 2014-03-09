@@ -28,7 +28,7 @@ namespace IMaxwell.Service.Production.Controllers
         /// Provides all sub categories in the system
         /// </summary>
         /// <remarks>GET api/category</remarks>
-        /// <returns>Returns the current contacts in system</returns>
+        /// <returns>Returns the current sub categories in system</returns>
         public IEnumerable<SubCategory> Get()
         {
             return _subCategoryProvider.Retrieve().ToList();
@@ -40,8 +40,7 @@ namespace IMaxwell.Service.Production.Controllers
         /// </summary>
         /// <remarks>// GET api/subcategory/1</remarks>
         /// <param name="id">Unique Identifier (SubCategory Id) for which to return detail</param>
-        /// <returns>Returns sub category for the category identified by sub category id (unique identifier)</returns>
-        [ActionName("SubCategoryId")]
+        /// <returns>Returns sub category identified by sub category id (unique identifier)</returns>
         public SubCategory Get(int id)
         {
 
@@ -53,10 +52,10 @@ namespace IMaxwell.Service.Production.Controllers
         /// Provides the specific category identified by id
         /// If category does not exist, returns an empty category
         /// </summary>
-        /// <remarks>// GET api/subcategory/categoryId/1</remarks>
+        /// <remarks>// GET api/subcategory/category/1</remarks>
         /// <param name="id">Unique Identifier (Category Id) for which to return sub categories</param>
         /// <returns>Returns sub categories for the category identified by category id (unique identifier)</returns>
-        [ActionName("CategoryId")]
+        [Route("api/{controller}/category/{id}")]
         public IEnumerable<SubCategory> GetByCategoryId(int id)
         {
 
