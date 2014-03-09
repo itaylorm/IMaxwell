@@ -55,9 +55,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CategoryProviderTest.cs" />
+    <Compile Include="ProductProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ContactProviderTest.cs" />
     <Compile Include="EmployeeProviderTest.cs" />
+    <Compile Include="SubCategoryProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\IMaxwell.Core.Model\IMaxwell.Core.Model.csproj">

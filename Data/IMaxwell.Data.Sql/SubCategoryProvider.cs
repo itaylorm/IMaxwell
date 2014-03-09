@@ -48,7 +48,8 @@ namespace IMaxwell.Data.Sql
                 subCategories = (from DataRow row in dataTable.Rows
                                  select new SubCategory
                                  {
-                                     Id = DataProvider.RetrieveIntValue(row, "ProductCategoryId"),
+                                     Id = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
+                                     CategoryId = DataProvider.RetrieveIntValue(row, "ProductCategoryId"),
                                      Name = DataProvider.RetrieveStringValue(row, "Name")
                                  }).ToList();
             }
@@ -78,6 +79,7 @@ namespace IMaxwell.Data.Sql
                               select new SubCategory
                               {
                                   Id = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
+                                  CategoryId = DataProvider.RetrieveIntValue(row, "ProductCategoryId"),
                                   Name = DataProvider.RetrieveStringValue(row, "Name")
                               }).ToList();
             }
