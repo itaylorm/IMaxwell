@@ -33,9 +33,40 @@ namespace IMaxwell.Data.Sql
         /// <summary>
         /// Provide the sub category matching the provided Id
         /// </summary>
+        /// <param name="id">Unique identifier for sub category</param>
+        /// <returns>Returns sub category information for passed sub category id</returns>
+        public SubCategory Retrieve(int id)
+        {
+            var subCategory = new SubCategory();
+
+            try
+            {
+
+                var dataTable = _queryProvider.RetrieveData("Production.ProductSubCategoryByProductSubCategoryId",
+                    "ProductSubCategoryId", id);
+
+                subCategory = (from DataRow row in dataTable.Rows
+                                 select new SubCategory
+                                 {
+                                     Id = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
+                                     CategoryId = DataProvider.RetrieveIntValue(row, "ProductCategoryId"),
+                                     Name = DataProvider.RetrieveStringValue(row, "Name")
+                                 }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(String.Format("Unable to retrieve the sub category for sub category id {0}", id), ex);
+            }
+
+            return subCategory;
+        }
+
+        /// <summary>
+        /// Provide the sub category matching the provided Id
+        /// </summary>
         /// <param name="categoryId">Unique identifier for category</param>
         /// <returns>Returns sub categories matching category id</returns>
-        public IEnumerable<SubCategory> Retrieve(int categoryId)
+        public IEnumerable<SubCategory> RetrieveByCategoryId(int categoryId)
         {
             var subCategories = new List<SubCategory>();
 

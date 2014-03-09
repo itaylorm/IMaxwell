@@ -28,14 +28,28 @@ namespace IMaxwell.Data.Sql.Integration
         }
 
         /// <summary>
-        /// Ensure that the sub category provider returns the associated sub categories
+        /// Ensure that the sub category provider returns the sub category associated with passed id
         /// </summary>
         [TestMethod]
         public void RetrieveSubCategoryTest()
         {
 
             var provider = new SubCategoryProvider(new QueryProvider("localhost", "IMaxwell"));
-            var subCategories = provider.Retrieve(3);
+            var subCategory = provider.Retrieve(3);
+
+            Assert.IsNotNull(subCategory);
+
+        }
+
+        /// <summary>
+        /// Ensure that the sub category provider returns the sub categories associated with passed category id
+        /// </summary>
+        [TestMethod]
+        public void RetrieveSubCategoriesByCategoryIdTest()
+        {
+
+            var provider = new SubCategoryProvider(new QueryProvider("localhost", "IMaxwell"));
+            var subCategories = provider.RetrieveByCategoryId(3);
 
             Assert.IsNotNull(subCategories);
             Assert.IsTrue(subCategories.Any());

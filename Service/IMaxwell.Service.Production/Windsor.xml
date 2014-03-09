@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <using assembly="iMaxwell.Core.Model" />
+  <using assembly="iMaxwell.Core.Provider" />
+  <components>
+  </components>
+</configuration>
+

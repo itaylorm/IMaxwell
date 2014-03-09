@@ -37,9 +37,41 @@ namespace IMaxwell.Data.Entity
         /// <summary>
         /// Provide the sub category matching the provided Id
         /// </summary>
+        /// <param name="id">Unique identifier for sub category</param>
+        /// <returns>Returns sub category information for passed sub category id</returns>
+        public SubCategory Retrieve(int id)
+        {
+
+            var subCategory = new SubCategory();
+
+            try
+            {
+
+                subCategory = (from s in _entities.ProductSubcategories
+                                 where s.ProductSubcategoryID == id
+                                 select new SubCategory
+                                 {
+                                     Id = s.ProductSubcategoryID,
+                                     CategoryId = s.ProductCategoryID,
+                                     Name = s.Name
+                                 }).FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(String.Format("Unable to retrieve the sub category for sub category id {0}", id), ex);
+            }
+
+            return subCategory;
+
+        }
+
+        /// <summary>
+        /// Provide the sub categories belonging to the provided category id
+        /// </summary>
         /// <param name="categoryId">Unique identifier for category</param>
         /// <returns>Returns sub categories matching category id</returns>
-        public IEnumerable<SubCategory> Retrieve(int categoryId)
+        public IEnumerable<SubCategory> RetrieveByCategoryId(int categoryId)
         {
 
             var subCategories = new List<SubCategory>();
