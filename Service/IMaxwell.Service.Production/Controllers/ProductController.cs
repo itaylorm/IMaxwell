@@ -25,10 +25,10 @@ namespace IMaxwell.Service.Production.Controllers
         }
 
         /// <summary>
-        /// Provides all sub categories in the system
+        /// Provides all products in the system
         /// </summary>
         /// <remarks>GET api/product</remarks>
-        /// <returns>Returns the current contacts in system</returns>
+        /// <returns>Returns the current products in system</returns>
         public IEnumerable<Product> Get()
         {
             return _productProvider.Retrieve().ToList();

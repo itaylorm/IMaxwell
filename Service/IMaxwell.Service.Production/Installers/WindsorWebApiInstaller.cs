@@ -39,6 +39,12 @@ namespace IMaxwell.Service.Production.Installers
                     .ImplementedBy(typeof(Data.Entity.ProductProvider))
                     .LifestylePerWebRequest()
                     .IsFallback());
+
+            container.Register(
+                Component.For<IInventoryProvider>()
+                    .ImplementedBy(typeof(Data.Entity.InventoryProvider))
+                    .LifestylePerWebRequest()
+                    .IsFallback());
         }
 
     }
