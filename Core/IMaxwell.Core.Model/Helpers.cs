@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using IMaxwell.Core.Model;
 
 namespace IMaxwell.Core.Model
 {
@@ -31,7 +28,8 @@ namespace IMaxwell.Core.Model
             var tagBuilder = new TagBuilder("input");
 
             tagBuilder.Attributes.Add("type", "text");
-            tagBuilder.Attributes.Add("value", value.ToString("c", CultureInfo.CreateSpecificCulture(attribute.Culture)));
+            if (attribute != null)
+                tagBuilder.Attributes.Add("value", value.ToString("c", CultureInfo.CreateSpecificCulture(attribute.Culture)));
 
             tagBuilder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
 

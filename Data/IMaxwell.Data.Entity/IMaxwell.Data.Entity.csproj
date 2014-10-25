@@ -138,6 +138,7 @@
     <Compile Include="Individual.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
+    <Compile Include="InventoryProvider.cs" />
     <Compile Include="JobCandidate.cs">
       <DependentUpon>IMaxwell.tt</DependentUpon>
     </Compile>
