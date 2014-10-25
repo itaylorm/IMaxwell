@@ -45,6 +45,7 @@
     <Compile Include="CategoryProvider.cs" />
     <Compile Include="ContactProvider.cs" />
     <Compile Include="EmployeeProvider.cs" />
+    <Compile Include="InventoryProvider.cs" />
     <Compile Include="ProductProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubCategoryProvider.cs" />

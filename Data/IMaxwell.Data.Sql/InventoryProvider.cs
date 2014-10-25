@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using IMaxwell.Core.Model;
 using IMaxwell.Core.Provider;
 using log4net;
 
-namespace IMaxwell.Data.Entity
+namespace IMaxwell.Data.Sql
 {
-
     /// <summary>
     /// Provides access to extended product information
     /// </summary>
@@ -16,32 +17,21 @@ namespace IMaxwell.Data.Entity
     {
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly Entities _entities;
+
         private readonly ICategoryProvider _categoryProvider;
         private readonly ISubCategoryProvider _subCategoryProvider;
         private readonly IProductProvider _productProvider;
 
         /// <summary>
-        /// Initialize with Entities
+        /// Initialize passed query provider
+        /// for subsequent data operations
         /// </summary>
-        public InventoryProvider()
+        /// <param name="queryProvider">Query Provider for data operations</param>
+        public InventoryProvider(Core.IQueryProvider queryProvider)
         {
-            _entities = new Entities();
-            _categoryProvider = new CategoryProvider(_entities);
-            _subCategoryProvider = new SubCategoryProvider(_entities);
-            _productProvider = new ProductProvider(_entities);
-        }
-
-        /// <summary>
-        /// Intitialize with passed entity framework reference
-        /// </summary>
-        /// <param name="entities">Entity framework reference</param>
-        public InventoryProvider(Entities entities)
-        {
-            _entities = entities;
-            _categoryProvider = new CategoryProvider(_entities);
-            _subCategoryProvider = new SubCategoryProvider(_entities);
-            _productProvider = new ProductProvider(_entities);
+            _categoryProvider = new CategoryProvider(queryProvider);
+            _subCategoryProvider = new SubCategoryProvider(queryProvider);
+            _productProvider = new ProductProvider(queryProvider);
         }
 
         /// <summary>
@@ -50,7 +40,7 @@ namespace IMaxwell.Data.Entity
         /// </summary>
         /// <param name="id">Unique identifier for category</param>
         /// <returns>Returns category matching id as well as associated sub categories and products</returns>
-        public Core.Model.Category Retrieve(int id)
+        public IMaxwell.Core.Model.Category Retrieve(int id)
         {
             var category = new Category();
 
@@ -73,13 +63,13 @@ namespace IMaxwell.Data.Entity
         /// Provide collection of current categories with associated sub categories and products
         /// </summary>
         /// <returns>Returns current categories with associated sub categories and products</returns>
-        public IEnumerable<Core.Model.Category> Retrieve()
+        public IEnumerable<IMaxwell.Core.Model.Category> Retrieve()
         {
             var categories = new List<Category>();
 
             try
             {
-                
+
                 categories = _categoryProvider.Retrieve().ToList();
                 categories.ForEach(c => c.SubCategories.AddRange(RetrieveSubCategoriesAndProducts(c.Id)));
 

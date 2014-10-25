@@ -64,6 +64,7 @@
     <Compile Include="EmployeeProviderTest.cs" />
     <Compile Include="ContactProviderTest.cs" />
     <Compile Include="SubCategoryProviderTest.cs" />
+    <Compile Include="InventoryProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\IMaxwell.Core.Model\IMaxwell.Core.Model.csproj">
