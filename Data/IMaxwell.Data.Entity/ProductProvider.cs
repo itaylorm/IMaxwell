@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using IMaxwell.Core.Provider;
 using log4net;
 
@@ -53,8 +51,15 @@ namespace IMaxwell.Data.Entity
                            select new Core.Model.Product
                            {
                                Id = p.ProductID,
+                               ProductNumber = p.ProductNumber,
                                SubCategoryId = p.ProductSubcategoryID,
-                               Name = p.Name
+                               Name = p.Name,
+                               Color = p.Color,
+                               Cost = p.StandardCost,
+                               Price = p.ListPrice,
+                               Weight = p.Weight,
+                               WeightUnitofMeasure = p.WeightUnitMeasureCode,
+                               ModifiedDate = p.ModifiedDate
                            }).FirstOrDefault();
 
             }
@@ -83,8 +88,15 @@ namespace IMaxwell.Data.Entity
                             select new Core.Model.Product
                             {
                                 Id = p.ProductID,
+                                ProductNumber = p.ProductNumber,
                                 SubCategoryId = p.ProductSubcategoryID,
-                                Name = p.Name
+                                Name = p.Name,
+                                Color = p.Color,
+                                Cost = p.StandardCost,
+                                Price = p.ListPrice,
+                                Weight = p.Weight,
+                                WeightUnitofMeasure = p.WeightUnitMeasureCode,
+                                ModifiedDate = p.ModifiedDate
                             }).ToList();
 
             }
@@ -114,8 +126,15 @@ namespace IMaxwell.Data.Entity
                             select new Core.Model.Product
                             {
                                 Id = p.ProductID,
+                                ProductNumber = p.ProductNumber,
                                 SubCategoryId = p.ProductSubcategoryID,
-                                Name = p.Name
+                                Name = p.Name,
+                                Color = p.Color,
+                                Cost = p.StandardCost,
+                                Price = p.ListPrice,
+                                Weight = p.Weight,
+                                WeightUnitofMeasure = p.WeightUnitMeasureCode,
+                                ModifiedDate = p.ModifiedDate
                             }).ToList();
 
             }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IMaxwell.Core.Model;
 using IMaxwell.Core.Provider;
 using IMaxwell.Data.Core;
@@ -49,7 +47,14 @@ namespace IMaxwell.Data.Sql
                             {
                                 Id = DataProvider.RetrieveIntValue(row, "ProductId"),
                                 SubCategoryId = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
-                                Name = DataProvider.RetrieveStringValue(row, "Name")
+                                Name = DataProvider.RetrieveStringValue(row, "Name"),
+                                ProductNumber = DataProvider.RetrieveStringValue(row, "ProductNumber"),
+                                Color = DataProvider.RetrieveStringValue(row, "Color"),
+                                Weight = DataProvider.RetrieveDecimalValue(row, "Weight"),
+                                WeightUnitofMeasure = DataProvider.RetrieveStringValue(row, "WeightUnitMeasureCode"),
+                                Cost = DataProvider.RetrieveDecimalValue(row, "StandardCost"),
+                                Price = DataProvider.RetrieveDecimalValue(row, "ListPrice"),
+                                ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate")
                             }).FirstOrDefault();
 
             }
@@ -79,7 +84,14 @@ namespace IMaxwell.Data.Sql
                               {
                                   Id = DataProvider.RetrieveIntValue(row, "ProductId"),
                                   Name = DataProvider.RetrieveStringValue(row, "Name"),
-                                  SubCategoryId = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId")
+                                  SubCategoryId = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
+                                  ProductNumber = DataProvider.RetrieveStringValue(row, "ProductNumber"),
+                                  Color = DataProvider.RetrieveStringValue(row, "Color"),
+                                  Weight = DataProvider.RetrieveDecimalValue(row, "Weight"),
+                                  WeightUnitofMeasure = DataProvider.RetrieveStringValue(row, "WeightUnitMeasureCode"),
+                                  Cost = DataProvider.RetrieveDecimalValue(row, "StandardCost"),
+                                  Price = DataProvider.RetrieveDecimalValue(row, "ListPrice"),
+                                  ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate")
                               }).ToList();
             }
             catch (Exception ex)
@@ -111,7 +123,14 @@ namespace IMaxwell.Data.Sql
                             {
                                 Id = DataProvider.RetrieveIntValue(row, "ProductId"),
                                 Name = DataProvider.RetrieveStringValue(row, "Name"),
-                                SubCategoryId = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId")
+                                SubCategoryId = DataProvider.RetrieveIntValue(row, "ProductSubCategoryId"),
+                                ProductNumber = DataProvider.RetrieveStringValue(row, "ProductNumber"),
+                                Color = DataProvider.RetrieveStringValue(row, "Color"),
+                                Weight = DataProvider.RetrieveDecimalValue(row, "Weight"),
+                                WeightUnitofMeasure = DataProvider.RetrieveStringValue(row, "WeightUnitMeasureCode"),
+                                Cost = DataProvider.RetrieveDecimalValue(row, "StandardCost"),
+                                Price = DataProvider.RetrieveDecimalValue(row, "ListPrice"),
+                                ModifiedDate = DataProvider.RetrieveDateTimeValue(row, "ModifiedDate")
                             }).ToList();
             }
             catch (Exception ex)

@@ -25,8 +25,32 @@ namespace IMaxwell.Data.Entity.Test
 
             var data = new List<Product> 
             { 
-                new Product { ProductID= 1, ProductSubcategoryID = 1, Name = "Bike" }, 
-                new Product { ProductID = 2, ProductSubcategoryID = 1, Name= "Car"}
+                new Product 
+                { 
+                    ProductID= 1, 
+                    ProductNumber = "ABC1",
+                    ProductSubcategoryID = 1, 
+                    Name = "Bike" ,
+                    Color = "Red",
+                    ModifiedDate = DateTime.Now.AddMonths(-1),
+                    ListPrice = 200,
+                    StandardCost = 50,
+                    Weight = 60,
+                    WeightUnitMeasureCode = "LB"
+                }, 
+                new Product 
+                { 
+                    ProductID = 2, 
+                    ProductNumber = "ABD1",
+                    ProductSubcategoryID = 1, 
+                    Name= "Car",
+                    Color="Blue",
+                    ModifiedDate = DateTime.Now.AddMonths(-2),
+                    ListPrice = 300,
+                    StandardCost = 100,
+                    Weight = 5000,
+                    WeightUnitMeasureCode = "LB"
+                }
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Product>>();
@@ -69,7 +93,19 @@ namespace IMaxwell.Data.Entity.Test
 
             var data = new List<Product> 
             { 
-                new Product { ProductID= 1, ProductSubcategoryID = 1, Name = "Bike" }
+                new Product 
+                { 
+                    ProductID= 1, 
+                    ProductNumber = "ABC1",
+                    ProductSubcategoryID = 1, 
+                    Name = "Bike" ,
+                    Color = "Red",
+                    ModifiedDate = DateTime.Now.AddMonths(-1),
+                    ListPrice = 200,
+                    StandardCost = 50,
+                    Weight = 60,
+                    WeightUnitMeasureCode = "LB"
+                }
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Product>>();
@@ -104,8 +140,32 @@ namespace IMaxwell.Data.Entity.Test
 
             var data = new List<Product> 
             { 
-                new Product { ProductID= 1, ProductSubcategoryID = 1, Name = "Bike" }, 
-                new Product { ProductID = 2, ProductSubcategoryID = 1, Name= "Car"}
+                new Product 
+                { 
+                    ProductID= 1, 
+                    ProductNumber = "ABC1",
+                    ProductSubcategoryID = 1, 
+                    Name = "Bike" ,
+                    Color = "Red",
+                    ModifiedDate = DateTime.Now.AddMonths(-1),
+                    ListPrice = 200,
+                    StandardCost = 50,
+                    Weight = 60,
+                    WeightUnitMeasureCode = "LB"
+                }, 
+                new Product 
+                { 
+                    ProductID = 2, 
+                    ProductNumber = "ABD1",
+                    ProductSubcategoryID = 1, 
+                    Name= "Car",
+                    Color="Blue",
+                    ModifiedDate = DateTime.Now.AddMonths(-2),
+                    ListPrice = 300,
+                    StandardCost = 100,
+                    Weight = 5000,
+                    WeightUnitMeasureCode = "LB"
+                }
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Product>>();
