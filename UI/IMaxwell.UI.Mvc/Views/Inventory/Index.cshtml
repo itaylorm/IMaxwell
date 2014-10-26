@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Product Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Inventory.css" rel="stylesheet" />
+<h2>Product Inventory</h2>
+
+<div id="categoryDiv">
+    <select id="categorySelect" data-bind="options:$root.Categories, value: SelectedCategory, optionsText:'Name', optionsCaption:'Choose Category'"></select>
+    <br/>
+    <select id="subCategorySelect" data-bind="options:$root.SubCategories, value: SelectedSubCategory, optionsText:'Name', optionsCaption:'Choose Sub Category'"></select>
+</div>
+
+<table id="productGrid">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>       
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: Products">
+        <tr>
+            <td data-bind="text: Id"></td>
+            <td data-bind="text: Name"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    
+    function categoryViewModel() {
+
+        var self = this;
+
+        self.SelectedCategory = ko.observable(undefined);
+        self.Categories = ko.observableArray([]);
+        
+        self.SelectedSubCategory = ko.observable(undefined);
+        self.SubCategories = ko.observableArray([]);
+        
+        self.SelectedProduct = ko.observable(undefined);
+        self.Products = ko.observableArray([]);
+
+        $.getJSON('http://imaxwell.net/production/api/inventory', {
+            format: 'json'
+        })
+        .done(function (data) {
+            self.Categories(data);
+        });
+    };
+
+    var viewModel = new categoryViewModel();
+    
+    viewModel.SubCategories = ko.computed(function () {
+        
+        if(viewModel.SelectedCategory())
+        {
+            $('#subCategorySelect').show();
+            return viewModel.SelectedCategory().SubCategories;
+        }
+        else
+        {
+            $('#subCategorySelect').hide();
+            return null;
+        }
+    });
+    
+    
+    viewModel.Products = ko.computed(function () {
+        
+        if(viewModel.SelectedSubCategory())
+        {
+            $('#productGrid').show();
+            return viewModel.SelectedSubCategory().Products;
+        }
+        else
+        {
+            $('#productGrid').hide();
+            return null;
+        }
+    });
+
+    ko.applyBindings(viewModel);
+
+</script>

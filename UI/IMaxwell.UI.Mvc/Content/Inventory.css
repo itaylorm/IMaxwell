@@ -1,0 +1,12 @@
+﻿#categoryDiv select {
+    margin-top: 10px;
+}
+
+#productGrid th {
+    padding-left: 10px;
+    padding-top: 5px;
+}
+#productGrid td {
+    padding-left: 10px;
+    padding-top: 5px;
+}
